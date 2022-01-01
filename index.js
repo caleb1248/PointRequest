@@ -12,12 +12,11 @@ app.post("/signup",(req,res) => {
 	fs.writeFileSync("parentcode.txt",code);
 	res.send("success");
 });
-app.post("/login",(req,res) => {
+app.post("/parent",(req,res) => {
 	const code = createHash("sha256").update(req.body.secretcode).digest("hex");
-	if(code==fs.readFilesync("parentcode.txt")){
+	if(code==fs.readFileSync("parentcode.txt")){
 		res.sendfile("parent.html")
 	}else{
-		res.send("oof")
+		res.redirect("/");
 	}
-})
-
+});
