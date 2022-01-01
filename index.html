@@ -8,11 +8,10 @@
 <body>
 	<input type="text">
 	<script>
-		const data = new FormData();
-		data.append("secretcode",document.querySelector('input').value)
 		document.querySelector("input").onchange = function(){
-			fetch({
-				url: '/login',
+			const data = new FormData();
+			data.append("secretcode",document.querySelector('input').value)
+			fetch("/login",{
 				method: 'POST',
 				body: data
 			}).then(resp => resp.text()).then(text => {
