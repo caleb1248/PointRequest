@@ -10,7 +10,8 @@
 	<script>
 		document.querySelector("input").onchange = function(){
 			const data = new FormData();
-			data.append("secretcode",document.querySelector('input').value)
+			data.set("secretcode",document.querySelector('input').value)
+		
 			fetch("/login",{
 				method: 'POST',
 				body: data
