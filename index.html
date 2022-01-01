@@ -6,6 +6,23 @@
 	<title>Document</title>
 </head>
 <body>
-	
+	<input type="text">
+	<script>
+		const data = new FormData();
+		data.append("secretcode",document.querySelector('input').value)
+		document.querySelector("input").onchange = function(){
+			fetch({
+				url: '/login',
+				method: 'post',
+				body: data
+			}).then(resp => resp.text()).then(text => {
+				if(text=="oof"){
+					alert("bad password");
+				}else{
+					document.write(text);
+				}
+			})
+		}
+	</script>
 </body>
 </html>

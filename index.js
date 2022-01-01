@@ -16,6 +16,8 @@ app.post("/login",(req,res) => {
 	const code = createHash("sha256").update(req.body.secretcode).digest("hex");
 	if(code==fs.readFilesync("parentcode.txt")){
 		res.sendfile("parent.html")
+	}else{
+		res.send("oof")
 	}
 })
 
