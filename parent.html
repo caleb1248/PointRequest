@@ -8,6 +8,9 @@
 <body>
 	<h1>point requests from your child</h1>
 	<div id="requests"></div>
-<script></script>
+	<script>
+		const generateHTML = (pointsRequested, taskCompleted) => `<div class="request">${pointsRequested} points for ${taskCompleted}: <button class="approve">approve request</button><button class="deny">deny request</button></div>`
+		document.querySelector("div#requests").innerHTML = generateHTML(100, "empty dishwasher (this is kinda absurd but whatever)");
+	</script>
 </body>
 </html>
