@@ -24,8 +24,8 @@ app.post("/parent",(req,res) => {
 		res.redirect("/");
 	}
 });
-app.post("/cookielogin",(req, res) => {
-	if(req.body.password==fs.readFileSync("parentcode.txt")){
+app.get("/cookielogin",(req, res) => {
+	if(req.headers["parentID"]==fs.readFileSync("parentcode.txt")){
 		res.sendfile("parent.html");
 	}else{
 		res.send("oof");
