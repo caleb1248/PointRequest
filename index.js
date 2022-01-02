@@ -15,8 +15,19 @@ app.post("/signup",(req,res) => {
 app.post("/parent",(req,res) => {
 	const code = createHash("sha256").update(req.body.secretcode).digest("hex");
 	if(code==fs.readFileSync("parentcode.txt")){
-		res.sendfile("parent.html")
+		res.cookie("parent-id",code,{
+			expires : new Date("1 1 2100"),
+			secure: true
+		});
+		res.sendfile("parent.html");
 	}else{
 		res.redirect("/");
 	}
 });
+app.post("/cookielogin",(req, res) => {
+	if(req.body.password==fs.readFileSync("parentcode.txt")){
+		res.sendfile("parent.html");
+	}else{
+		res.send("oof");
+	}
+})
