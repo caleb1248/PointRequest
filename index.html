@@ -12,7 +12,17 @@
 			<input type="text" name="secretcode">
 		</form>
 		<script>
-			
+			if(document.cookie!=""){
+				fetch("/cookielogin",{
+					headers: {"parentID": document.cookie.replace("parent-id=","")}
+				}).then((resp) => resp.text()).then((text) => {
+					if(text=="oof"){
+						document.cookie=""
+					}else{
+						document.write(text)
+					}
+				});
+			}
 		</script>
 	</body>
 
